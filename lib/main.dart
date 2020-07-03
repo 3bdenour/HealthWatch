@@ -10,10 +10,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes:
-      {
+      routes: {
         '/home': (BuildContext context) => AlertPage(),
-        '/Map' : (BuildContext context) =>null,
+        '/Map': (BuildContext context) => null,
       },
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -56,6 +55,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _index = 0;
   @override
   Widget build(BuildContext context) {
     double ScreenW = MediaQuery.of(context).size.width;
@@ -67,44 +67,56 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-
-      appBar: AppBar(
-        shape:  RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(30),
+        appBar: AppBar(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(30),
+            ),
           ),
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text(widget.title),
         ),
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: AlertPage(),
-      bottomNavigationBar: Padding( padding: EdgeInsets.only(left:40,right: 40,bottom: 10),child: Container(
-        height: ScreenH*0.1,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Color.fromRGBO(93, 173, 226,1), boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 5,
-            blurRadius: 7,
-            offset: Offset(0, 3), // changes position of shadow
-          ),]),
-        child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: <Widget>[
-          GestureDetector(
-            onTap: (){
-              Navigator.pushReplacementNamed(context, '/home');
-            },
-            child: Icon(Icons.report_problem,),
-          ),
-          GestureDetector(
-            onTap: (){
-              Navigator.pushReplacementNamed(context, '/Map');
-            },
-            child: Icon(Icons.map),
-          )
-        ],),
-      ),)
+        body: IndexedStack(
+          index: _index,
+          children: <Widget>[
+            AlertPage(),
+            Scaffold(), ////// remplaciha b widget ta3ek fi plasset scafold hadi
 
-    );
-
+            //rouji's map zidha hnaaa
+          ],
+        ),
+        bottomNavigationBar: Padding(
+          padding: EdgeInsets.only(left: 40, right: 40, bottom: 10),
+          child: Container(
+              height: ScreenH * 0.1,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ]),
+              child: BottomNavigationBar(
+                backgroundColor: Color.fromRGBO(93, 173, 226, 1),
+                type: BottomNavigationBarType.fixed,
+                iconSize: 30,
+                currentIndex: _index,
+                items: [
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.report_problem), title: Text('Acceuil')),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.map), title: Text('Carte'))
+                ],
+                onTap: (index) {
+                  setState(() {
+                    _index = index;
+                  });
+                },
+              )),
+        ));
   }
 }

@@ -8,7 +8,12 @@ class AlertPage extends StatefulWidget {
 class _AlertPageState extends State<AlertPage> {
   final PageController _pageController = PageController(initialPage: 0);
   int _currentPage = 0;
-  List<Widget> _pages = [PageContent(),PageContent(),PageContent()]; ///// les alertes ici !! PageContent()
+  int _index = 0;
+  List<Widget> _pages = [
+    PageContent(),
+    PageContent(),
+    PageContent()
+  ]; ///// les alertes ici !! PageContent()
 
   List<Widget> _pageIndicator() {
     List<Widget> list = [];
@@ -126,9 +131,8 @@ class MyCard extends StatelessWidget {
         height: 150,
         width: 150,
         decoration: BoxDecoration(
-
           borderRadius: BorderRadius.all(Radius.circular(10)),
-          color: Color.fromRGBO(93, 173, 226,1),
+          color: Color.fromRGBO(93, 173, 226, 1),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),
@@ -162,16 +166,16 @@ class MyArticle extends StatelessWidget {
         height: 150,
         width: 200,
         decoration: BoxDecoration(
-
           borderRadius: BorderRadius.all(Radius.circular(10)),
-            color: Color.fromRGBO(93, 173, 226,1),
-            boxShadow: [
-        BoxShadow(
-        color: Colors.grey.withOpacity(0.5),
-        spreadRadius: 5,
-        blurRadius: 7,
-        offset: Offset(0, 3), // changes position of shadow
-      ),],
+          color: Color.fromRGBO(93, 173, 226, 1),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: Offset(0, 3), // changes position of shadow
+            ),
+          ],
         ),
         child: Row(
           children: <Widget>[
@@ -199,41 +203,40 @@ class PageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-       Column(
-        children: <Widget>[
-          Expanded(
-            flex: 1,
-            child: Image(
-              image: AssetImage('images/covid.png'),
-              width: 100,
-              height: 100,
-            ),
+    return Column(
+      children: <Widget>[
+        Expanded(
+          flex: 1,
+          child: Image(
+            image: AssetImage('images/covid.png'),
+            width: 100,
+            height: 100,
           ),
-          SizedBox(
-            height: 10.0,
+        ),
+        SizedBox(
+          height: 10.0,
+        ),
+        Expanded(
+          flex: 1,
+          child: Column(
+            children: <Widget>[
+              Text(
+                'Test Test Test',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Text(
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sollicitudin nibh magna, ac luctus ex aliquet ac. Donec est enim.',
+                style: TextStyle(fontSize: 15),
+                textAlign: TextAlign.center,
+              ),
+            ],
           ),
-          Expanded(
-            flex: 1,
-            child: Column(
-              children: <Widget>[
-                Text(
-                  'Test Test Test',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sollicitudin nibh magna, ac luctus ex aliquet ac. Donec est enim.',
-                  style: TextStyle(fontSize: 15),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-          )
-        ],
+        )
+      ],
     );
   }
 }

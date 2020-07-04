@@ -11,8 +11,8 @@ class _AlertPageState extends State<AlertPage> {
   int _index = 0;
   List<Widget> _pages = [
     PageContent(),
-    PageContent(),
-    PageContent()
+    PageContent2(),
+    PageContent3()
   ]; ///// les alertes ici !! PageContent()
 
   List<Widget> _pageIndicator() {
@@ -48,6 +48,7 @@ class _AlertPageState extends State<AlertPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: _pages.length != 0
                 ? <Widget>[
+                    Spacer(),
                     Expanded(
                       flex: 5,
                       child: PageView(
@@ -99,17 +100,19 @@ class _AlertPageState extends State<AlertPage> {
                 ),
               ))
             : Container(),
+        Text(
+          "Les anciens épidémies",
+          style: TextStyle(color: Colors.white),
+        ),
         Expanded(
             child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             children: <Widget>[
               MyCard(),
+              MyCard2(),
               MyCard(),
-              MyCard(),
-              MyCard(),
-              MyCard(),
-              MyCard(),
+              MyCard2(),
             ],
           ),
         ))
@@ -128,8 +131,8 @@ class MyCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Container(
-        height: 150,
-        width: 150,
+        height: 100,
+        width: 100,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10)),
           color: Color.fromRGBO(93, 173, 226, 1),
@@ -145,7 +148,45 @@ class MyCard extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Image.asset("images/covid.png"),
-            Text("Corona"),
+            Text("Corona", style: TextStyle(color: Color(0xffDA1111))),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MyCard2 extends StatelessWidget {
+  const MyCard2({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Container(
+        height: 100,
+        width: 100,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          color: Color.fromRGBO(93, 173, 226, 1),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: Offset(0, 3), // changes position of shadow
+            ),
+          ],
+        ),
+        child: Column(
+          children: <Widget>[
+            Image.asset("images/peste.png"),
+            Text(
+              "La peste",
+              style: TextStyle(color: Color(0xffDA1111)),
+            ),
           ],
         ),
       ),
@@ -163,7 +204,7 @@ class MyArticle extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Container(
-        height: 150,
+        height: 200,
         width: 200,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -209,8 +250,8 @@ class PageContent extends StatelessWidget {
           flex: 1,
           child: Image(
             image: AssetImage('images/covid.png'),
-            width: 100,
-            height: 100,
+            width: 200,
+            height: 200,
           ),
         ),
         SizedBox(
@@ -221,7 +262,7 @@ class PageContent extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Text(
-                'Test Test Test',
+                "Qu'est ce que le COVID-19 ?",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
@@ -229,8 +270,102 @@ class PageContent extends StatelessWidget {
                 height: 10.0,
               ),
               Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sollicitudin nibh magna, ac luctus ex aliquet ac. Donec est enim.',
-                style: TextStyle(fontSize: 15),
+                "La COVID-19 est la maladie \n infectieuse causée par le dernier \ncoronavirus qui a été découvert.",
+                style: TextStyle(fontSize: 15, color: Colors.white),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class PageContent3 extends StatelessWidget {
+  /* final String title;
+  final String subtitle;
+  final String imagePath;
+
+  const PageContent({this.title, this.subtitle, this.imagePath});*/
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Expanded(
+          flex: 1,
+          child: Image(
+            image: AssetImage('images/comb.png'),
+            width: 130,
+            height: 130,
+          ),
+        ),
+        SizedBox(
+          height: 10.0,
+        ),
+        Expanded(
+          flex: 1,
+          child: Column(
+            children: <Widget>[
+              Text(
+                "Quelles sont les procédures\nbarrières ?",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Text(
+                "Port de la bavette Distance de sécurité (1m) \nEviter les regroupements \nSortir qu'en cas d'urgence ",
+                style: TextStyle(fontSize: 14, color: Colors.white),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class PageContent2 extends StatelessWidget {
+  /* final String title;
+  final String subtitle;
+  final String imagePath;
+
+  const PageContent({this.title, this.subtitle, this.imagePath});*/
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Expanded(
+          flex: 1,
+          child: Image(
+            image: AssetImage('images/symp.png'),
+            width: 200,
+            height: 200,
+          ),
+        ),
+        SizedBox(
+          height: 10.0,
+        ),
+        Expanded(
+          flex: 1,
+          child: Column(
+            children: <Widget>[
+              Text(
+                "Quels sont les symptômes ?",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Text(
+                "Toux sèche\nMaux de tête\nDifficultés respiratoires\nFatigue musculaire",
+                style: TextStyle(fontSize: 15, color: Colors.white),
                 textAlign: TextAlign.center,
               ),
             ],

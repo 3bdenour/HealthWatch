@@ -1,0 +1,12 @@
+[
+  {
+    "stylers": [
+      {
+        "color": "#3b76ff"
+      },
+      {
+        "visibility": "simplified"
+      }
+    ]
+  }
+]

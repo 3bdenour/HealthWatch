@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "605829099342",
+    "firebase_url": "https://healthwatch-3.firebaseio.com",
+    "project_id": "healthwatch-3",
+    "storage_bucket": "healthwatch-3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605829099342:android:a7cac32850d3227c70f81f",
+        "android_client_info": {
+          "package_name": "com.example.map_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "605829099342-jpamgosbnt06i2ecg0odhdh3ao8huhjb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0r1mY-iVNQh2lNHHVt3f7TcbABEl0VTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "605829099342-jpamgosbnt06i2ecg0odhdh3ao8huhjb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

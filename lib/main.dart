@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:map_test/map.dart';
 import './main_page.dart';
 
 void main() {
@@ -12,9 +13,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         '/home': (BuildContext context) => AlertPage(),
-        '/Map': (BuildContext context) => null,
+        '/Map': (BuildContext context) => Maptest(),
       },
-      title: 'Flutter Demo',
+      title: 'Alerte épidémiologique ',
+      // debugShowMaterialGrid: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -26,12 +28,13 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.blue,
+
         // This makes the visual density adapt to the platform that you run
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home '),
+      home: MyHomePage(title: 'Alerte épidémiologique '),
     );
   }
 }
@@ -67,6 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
+        backgroundColor: Color(0xff5DADE2),
         appBar: AppBar(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
@@ -81,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
           index: _index,
           children: <Widget>[
             AlertPage(),
-            Scaffold(), ////// remplaciha b widget ta3ek fi plasset scafold hadi
+            Maptest(), ////// remplaciha b widget ta3ek fi plasset scafold hadi
 
             //rouji's map zidha hnaaa
           ],
@@ -101,13 +105,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ]),
               child: BottomNavigationBar(
-                backgroundColor: Color.fromRGBO(93, 173, 226, 1),
+                backgroundColor:
+                    Colors.white, //Color.fromRGBO(93, 173, 226, 1),
                 type: BottomNavigationBarType.fixed,
                 iconSize: 30,
                 currentIndex: _index,
                 items: [
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.report_problem), title: Text('Acceuil')),
+                      icon: Icon(Icons.home), title: Text('Acceuil')),
                   BottomNavigationBarItem(
                       icon: Icon(Icons.map), title: Text('Carte'))
                 ],
